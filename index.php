@@ -29,16 +29,20 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
 
             <?php
                 // get the list of sub-folders and remove /assets
-                $dirs = array_filter(glob('*'), 'is_dir');
+                $dirs = glob('*', GLOB_ONLYDIR);
+
+                // Folder "test10" should be after "test9" and not before "test2"
+                natsort($dirs);
+
                 if (false !== ($key = array_search('assets', $dirs))) {
                     unset($dirs[$key]);
                 }
 
                 // Convert the list of folders into list items and add an hyperlink on each
                 // so we can visit the folder
-                echo '<ul><li>' . implode(array_map(function ($tag) {
+                echo '<ol><li>' . implode(array_map(function ($tag) {
                     return sprintf('<a href="%s/index.php">%s</a>', $tag, $tag);
-                }, $dirs), '</li><li>') . '</li></ul>';
+                }, $dirs), '</li><li>') . '</li></ol>';
             ?>
         </div>
         <script src="assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>

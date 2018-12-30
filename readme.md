@@ -500,3 +500,389 @@ And redraw the DOM so buttons like `Add to cart` will be disabled when `inStock`
   }
 </script>
 ```
+
+### Test8 - Migrate to component
+
+> [Tutorial: Migrate to component](https://www.vuemastery.com/courses/intro-to-vue-js/components)
+
+A component is a block of HTML / JS code that can be reuse in another projects.
+
+The declaration is like:
+
+```html
+<div id="app"><product></product></div>
+<script>
+  Vue.component('product' {
+    template: `<h1>I'm a product component</h1>`
+  })
+  var app = new Vue({
+    el: '#app'
+  });
+</script>
+```
+
+The Vue component should be placed inside the Vue root element (which is `#app` here above); not outside.
+
+Using property (without any validation):
+
+```html
+<div id="app"><product productname="Socks"></product></div>
+<script>
+  Vue.component("product", {
+    props: ["productname"],
+    template: `<h1>I'm an amazing {{ productname }} product.</h1>`
+  });
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+```
+
+Using property (with built-in validation):
+
+```html
+<div id="app"><product name="Socks"></product></div>
+<script>
+  Vue.component("product", {
+    props: {
+      name: {
+        type: String,
+        required: true,
+        default: "AnyProductName"
+      },
+    template: `<h1>I'm an amazing {{ name }} product.</h1>`
+  });
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+```
+
+A Vue instance can be easily converted to a component. Almost everything can be migrated to a component **without any changes**.
+
+In the previous test (#7), we had data, methods and computed elements. And, of course, in our HTML, we had our DOM elements (the image, the product name, detailed information's, colors and buttons for adding to / removing from cart).
+
+```javascript
+var app = new Vue({
+  el: "#app",
+  data: {
+    [...]
+  },
+  methods: {
+    [...]
+  },
+  computed: {
+    [...]
+  }
+});
+```
+
+`data` should become a function (because we should be able to override data when using the component in our final code), `methods` and `computed` remains unchanged:
+
+```javascript
+Vue.component("product", {
+  template: `[ OUR HTML ]`,
+  data() {
+    return {
+      [...]
+    }
+  },
+  methods: {
+    [...]
+  },
+  computed: {
+    [...]
+  }
+});
+```
+
+The final code will be (lighter version):
+
+```html
+<div id="app"><product></product></div>
+
+<script src="https://unpkg.com/vue"></script>
+
+<script>
+  Vue.component("product", {
+    template: `
+      <div class="product">
+        <div class="product-image">
+          <img v-bind:src="image" width="400px"/>
+        </div>
+        <div class="product-info">
+          <h2>{{ titleProduct }}</h2>
+          <button v-on:click="addToCart">Add to Cart</button>
+        </div>
+      </div>
+    `,
+    data() {
+      return {
+        brand: "Master banch",
+        product: "Socks",
+        image: "assets/images/Socks-green.png",
+        cart: 0
+      };
+    },
+    methods: {
+      addToCart() {
+        this.cart += 1;
+      }
+    },
+    computed: {
+      titleProduct() {
+        return this.brand + " " + this.product;
+      }
+    }
+  });
+
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+```
+
+### Test9 - Communicating events
+
+> [Tutorial: Communicating events](https://www.vuemastery.com/courses/intro-to-vue-js/communicating-events)
+
+A component will emit an event to inform the parent (the DOM that includes the component) that something has arrived like clicking on the `Add to cart` button.
+
+For instance, in our Product component, we already have a `addToCart()` method. Instead of using the `this.cart += 1;` code, we can put the cart outside the component (so every products will use only one global cart). So `this.cart += 1;` can't work anymore if we remove `cart` from the `data()` function of the component.
+
+The component below has his own cart:
+
+```html
+<script>
+  Vue.component("product", {
+    [...]
+    data() {
+      return {
+        cart: 0
+      }
+    },
+    methods: {
+      addToCart() {
+        this.cart += 1;
+      }
+    }
+  });
+
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+```
+
+Will be refactored by removing the `cart` data and emitting an event:
+
+```html
+<script>
+  Vue.component("product", {
+    [...]
+    data() {
+      return {
+      }
+    },
+    methods: {
+      addToCart() {
+        this.$emit('add-to-cart')
+      }
+    }
+  });
+
+  var app = new Vue({
+    el: "#app"
+  });
+</script>
+```
+
+Listening the event is just like any other events:
+
+```html
+<div id="app">
+  <div class="cart"><p>Cart({{cart}})</p></div>
+  <product @add-to-cart="addCart"></product>
+</div>
+
+<script>
+  Vue.component("product", {
+      template: `[...]`,
+      data() {
+          return {
+              [...]
+          }
+      },
+      methods: {
+          addToCart() {
+              this.$emit('add-to-cart');
+          },
+          removeFromCart() {
+              this.$emit('remove-from-cart');
+          }
+      }
+  });
+
+  var app = new Vue({
+      el: '#app',
+      data: {
+          cart: 0
+      },
+      methods: {
+          updateCart() {
+              this.cart += 1;
+          },
+          removeCart() {
+              if (this.cart > 0) this.cart -= 1;
+          }
+      },
+  });
+</script>
+```
+
+### Test10 - Forms
+
+> [Tutorial: Forms](https://www.vuemastery.com/courses/intro-to-vue-js/forms)
+
+For allowing a two-ways binding (not only getting a value but also setting it), we need to use `v-model` instead of `v-bind`.
+
+The edit box below will be initialized to `data.name` but will also update the value when the user will type something in the form.
+
+```html
+<input id="name" v-model="name" />
+```
+
+To typecast the value as a number:
+
+```html
+<select id="rating" v-model.number="rating"></select>
+```
+
+#### Building a review form
+
+The code below will build a review form with four entries: the username, does he/she will recommend or not the product, a rating and his/her review.
+
+- `@submit.prevent`: attach our code to the submit event of the form and also prevent the normal feature of the browser i.e. refresh the page after a form's submission;
+- `v-if="errors.length"`: our `onSubmit` function will check if fields are all filled in and if not, will add errors messages ('Please fill in ...') into global `errors` array. So the syntax `v-if` will check if the array is empty or not and if not, will display each errors (_this part can be migrated into a component_);
+- `v-model.number="rating"`: the `.number` suffix will typecast the data as a number;
+
+```javascript
+Vue.component("product-review", {
+  template: `
+      <form class="review-form" @submit.prevent="onSubmit">
+          <p v-if="errors.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                  <li v-for="error in errors">{{  error }}</li>
+              </ul>
+          </p>
+          <p>
+              <label for="name">Name:</label>
+              <input id="name" v-model="name"/>
+          </p>
+          <p>
+              <label for="review">Review:</label>
+              <textarea id="review" v-model="review"></textarea>
+          </p>
+          <p>
+              <label for="rating">Rating:</label>
+              <select id="rating" v-model.number="rating">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+              </select>
+          </p>
+          <p>Would you recommend this product?</p>
+          <label>Yes<input type="radio" value="Yes" v-model="recommend"/></label>
+          <label>No<input type="radio" value="No" v-model="recommend"/></label>
+          <p>
+              <input type="submit" value="Submit"/>
+          </p>
+      </form>
+  `,
+  data() {
+    return {
+      name: null,
+      review: null,
+      rating: null,
+      recommend: null,
+      errors: []
+    };
+  },
+  methods: {
+    onSubmit() {
+      this.errors = [];
+      if (this.name && this.review && this.rating && this.recommend) {
+        let ProductReview = {
+          name: this.name,
+          review: this.review,
+          rating: this.rating,
+          recommend: this.recommend
+        };
+        this.$emit("review-submitted", ProductReview);
+        this.name = null;
+        this.review = null;
+        this.rating = null;
+        this.recommend = null;
+      } else {
+        if (!this.name) this.errors.push("Name required.");
+        if (!this.review) this.errors.push("Review required.");
+        if (!this.rating) this.errors.push("Rating required.");
+        if (!this.recommend) this.errors.push("Recommendation required.");
+      }
+    }
+  }
+});
+```
+
+The `onSubmit()` method here above will create a new `ProductReview` object only when the four fields are filled in and will the emit an event `review-submitted` with the object as parameter so the parent can receive posted information's and display them f.i.
+
+### Test11 - Tabs
+
+> [Tutorial: Tabs](https://www.vuemastery.com/courses/intro-to-vue-js/tabs)
+
+Quickly, we'll have a master component lets say `product` that will contains child components: `product-detail`, `product-reviews-tabs`, ... and child components will also have child components. For instance `product-review-tabs` can contain a component for displaying reviews and one for showing a form to add a review.
+
+So: Product --> Product-review-tabs --> Product-review-add-form
+
+By submitting a product review, the _grandfather_ needs to receive the event `a review has been submitted`. To allow this, a `bus event` will be instantiated. This is just like any other Vue instance...
+
+```javascript
+var eventBus = new Vue();
+```
+
+By submitting the review, an event will be triggered:
+
+```javascript
+eventBus.$emit("review-submitted", ProductReview);
+```
+
+And the grandfather will listen this event by using a new property called `mounted`:
+
+```javascript
+Vue.component('product', {
+  props: {
+      [ ... ]
+  },
+  template: `[ ... ]`,
+  data() {
+      return {
+          [ ... ],
+          reviews: []
+      }
+  },
+  methods: {
+      [ ... ]
+  },
+  computed: {
+      [ ... ]
+  },
+  mounted() {
+      eventBus.$on('review-submitted', productReview => {
+          this.reviews.push(productReview)
+      })
+  }
+});
+```
