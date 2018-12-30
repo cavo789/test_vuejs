@@ -1,3 +1,12 @@
+<?php
+define('REPO', 'https://github.com/cavo789/test_vuejs#test7---computed-properties');
+
+// Get the GitHub corner
+$github = '';
+if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
+    $github = str_replace('%REPO%', REPO, file_get_contents($cat));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,10 +18,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
         <title>VueJS - Testing</title>
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
+        <?php echo $github; ?>
         <div class="container">
+            <img id="logoVue" src='../assets/images/logo.png'/>
             <?php echo '<h1>' . basename(__DIR__) . '</h1>'; ?>
 
             <p><a href="https://www.vuemastery.com/courses/intro-to-vue-js/computed-properties">Tutorial: Computed properties</a></p>
@@ -58,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <a href="..">Go back</a>
+            <a href="..">Return to the index</a> - <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
         <script src="../assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="../assets/js/bootstrap.min.js"></script>

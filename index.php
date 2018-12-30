@@ -1,3 +1,12 @@
+<?php
+define('REPO', 'https://github.com/cavo789/test_vuejs');
+
+// Get the GitHub corner
+$github = '';
+if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
+    $github = str_replace('%REPO%', REPO, file_get_contents($cat));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,10 +19,13 @@
         <title>Learning Vue</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        
     </head>
     <body>
+        <?php echo $github; ?>
         <div class="container">
-            <h1>List of tests</h1>
+            <img id="logoVue" src='assets/images/logo.png'/>
+            <h1>Learning Vue - Step by step</h1>
 
             <?php
                 // get the list of sub-folders and remove /assets

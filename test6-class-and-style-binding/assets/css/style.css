@@ -20,7 +20,7 @@ body {
   padding: 1rem;
 }
 
-img {
+.product img {
   border: 1px solid #d8d8d8;
   width: 70%;
   margin: 40px;
