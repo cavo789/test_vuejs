@@ -20,7 +20,6 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
         <title>VueJS - Testing</title>
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
         <?php echo $github; ?>
