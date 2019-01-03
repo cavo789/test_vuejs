@@ -26,9 +26,7 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
         <div class="container">
             <img id="logoVue" src='../assets/images/logo.png'/>
             <?php echo '<h1>' . basename(__DIR__) . '</h1>'; ?>
-
             <p><a href="https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding">Tutorial: Attribute binding</a></p>
-
             <div id="app">
                 <div class="product">
                     <div class="product-image">
@@ -40,13 +38,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     </div>
                 </div>
             </div>
-            <a href="..">Return to the index</a> - <a href="<?php echo REPO;?>">Get explanations on Github</a>
+            <a href="..">Return to the index</a> - 
+            <a href="../test3-conditional-rendering/index.php">Next</a> -
+            <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="../assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-
         <script src="https://unpkg.com/vue"></script>
-
         <script>
             var app = new Vue({
                 el: '#app',
@@ -55,10 +51,9 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     image:'assets/images/Socks-green.png',
                     alt:'a pair of socks',
                     title:'My preferred socks',
-                }  
+                }
             });
         </script>
-
     </body>
 </html>
 

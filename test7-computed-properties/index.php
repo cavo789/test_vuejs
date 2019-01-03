@@ -26,9 +26,7 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
         <div class="container">
             <img id="logoVue" src='../assets/images/logo.png'/>
             <?php echo '<h1>' . basename(__DIR__) . '</h1>'; ?>
-
             <p><a href="https://www.vuemastery.com/courses/intro-to-vue-js/computed-properties">Tutorial: Computed properties</a></p>
-
             <div id="app">
                 <div class="product">
                     <div class="product-image">
@@ -40,43 +38,36 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                         <p v-if="inStock>10">In Stock</p>
                         <p v-else-if="inStock > 0">Almost sold out!</p>
                         <p v-else :class="{ outOfStock: !inStock }">Out of Stock</p>
-
                         <ul>
                             <li v-for="detail in details">{{ detail }}</li>
                         </ul>
-
                         <div v-for="(variant, index) in variants" 
                             :key="variant.variantId" 
                             class="color-box" 
                             :style="{ backgroundColor: variant.variantColor }"
                             @mouseover="updateProduct(index)">
                         </div>
-
                         <button v-on:click="addToCart" 
                             :class="{ disabledButton: !inStock}"
                             :disabled="!inStock">
                             Add to Cart
                         </button>
-
                         <button v-on:click="removeFromCart"
                             :class="{ disabledButton: !inStock}"
                             :disabled="!inStock">
                             Remove
                         </button>
-
                         <div class="cart">
                             <p>Cart({{cart}})</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="..">Return to the index</a> - <a href="<?php echo REPO;?>">Get explanations on Github</a>
+            <a href="..">Return to the index</a> - 
+            <a href="../test8-migrate-to-component/index.php">Next</a> - 
+            <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="../assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-
         <script src="https://unpkg.com/vue"></script>
-
         <script>
             var app = new Vue({
                 el: '#app',

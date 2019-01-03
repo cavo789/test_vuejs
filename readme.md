@@ -1,17 +1,43 @@
 # Test VueJS
 
-> THIS REPOSITORY HAS NO ADDED-VALUE FOR ANYONE EXCEPT JUST ME. Personal learning application to understand VueJS.
+> Personal learning application to understand Vue.js. Step by step approach
 
-- website : https://vuejs.org/
-- laracast tutorials : https://laracasts.com/series/learn-vue-2-step-by-step/
-
-![Logo](https://vuejs.org/images/logo.png)
+- [Quick introduction](#quick-introduction)
+  - [Cheatsheet](#cheatsheet)
+- [Installation](#installation)
+- [Debugging](#debugging)
+- [Visual Studio code - Extensions](#visual-studio-code---extensions)
+- [Playing with Vue](#playing-with-vue)
+  - [Test1 - Minimal application](#test1---minimal-application)
+  - [Test2 - Binding attribute](#test2---binding-attribute)
+  - [Test3 - Conditional rendering](#test3---conditional-rendering)
+  - [Test4 - List rendering](#test4---list-rendering)
+  - [Test5 - Event handling](#test5---event-handling)
+    - [Update the source of the image](#update-the-source-of-the-image)
+  - [Test6 - Class and style binding](#test6---class-and-style-binding)
+  - [Test7 - Computed properties](#test7---computed-properties)
+  - [Test8 - Migrate to component](#test8---migrate-to-component)
+  - [Test9 - Communicating events](#test9---communicating-events)
+  - [Test10 - Forms](#test10---forms)
+    - [Building a review form](#building-a-review-form)
+  - [Test11 - Tabs](#test11---tabs)
 
 ## Quick introduction
 
-[https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/)
+- website: https://vuejs.org/
+- Vue mastery tutorials: https://www.vuemastery.com/courses/intro-to-vue-js/
+  - The one followed for this repository (tests 1 till 11): [https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/)
+- laracast tutorials: https://laracasts.com/series/learn-vue-2-step-by-step/
+- A curated list of awesome things related to Vue.js: https://github.com/vuejs/awesome-vue
+- vuejs on Github: https://github.com/vuejs
+
+![Vue logo](https://vuejs.org/images/logo.png)
 
 - Vue is **Reactive**: the Vue instance data object is linked to every places where this data is used so, by assigning a new value to a data, Vue will guarantee that the newest value will be displayed in the DOM. No coding is required.
+
+### Cheatsheet
+
+- [The one of VueMastery](https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf)
 
 ## Installation
 
@@ -23,13 +49,28 @@ Read more: https://fr.vuejs.org/v2/guide/installation.html#CDN
 
 [Vue.js devtools for Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd).
 
+Note: when the HTML is accessed by file://a_file.html, we'll need to change the configuration of the add-on and allow `file access URL`.
+
 In the options of the add-on, we'll need to `Allow access to file URLs`.
+
+[https://laracasts.com/series/learn-vue-2-step-by-step/episodes/2](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/2) introduce the add-on and how we can use it; from the Chrome console.
+
+## Visual Studio code - Extensions
+
+- Vetur - Syntax highlighting for `.vue` files
+  - Github: https://github.com/vuejs/vetur
+  - Marketplace Visual Studio: https://marketplace.visualstudio.com/items?itemName=octref.vetur
+- Prettier - Script beautifier
+  - Github: https://github.com/prettier/prettier-vscode
+- ESLint: Linting utility for Javascript and JSX
+  - GitHub: https://github.com/Microsoft/vscode-eslint
 
 ## Playing with Vue
 
 ### Test1 - Minimal application
 
 > [Tutorial: The Vue instance](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/)
+> Same minimal approach and really good explained on [https://laracasts.com/series/learn-vue-2-step-by-step/episodes/1](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/1)
 
 1. Creating an `app` DOM object and put in there `expression` by using the `{{ ... }}` syntax.
 2. In JS, create a Vue instance that refers to the `app` DOM element. Put in the `data` store an attribute called `product` and assign a value.
@@ -205,7 +246,10 @@ And here one DIV by variants:
 </script>
 ```
 
-Note: it is recommended to use a special key attribute when rendering elements like above so that Vue can keep track of each node's identity.
+Notes:
+
+- it is recommended to use a special key attribute when rendering elements like above so that Vue can keep track of each node's identity.
+- another syntax is `<li v-for="detail in details" v-text="detail"></li>`: with v-text, we can specify the text to display without using an expression like `{{ detail }}`.
 
 ### Test5 - Event handling
 
@@ -842,6 +886,7 @@ The `onSubmit()` method here above will create a new `ProductReview` object only
 ### Test11 - Tabs
 
 > [Tutorial: Tabs](https://www.vuemastery.com/courses/intro-to-vue-js/tabs)
+> Also look [Component Communication #2](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/13) on Laracast.
 
 Quickly, we'll have a master component lets say `product` that will contains child components: `product-detail`, `product-reviews-tabs`, ... and child components will also have child components. For instance `product-review-tabs` can contain a component for displaying reviews and one for showing a form to add a review.
 
@@ -886,3 +931,340 @@ Vue.component('product', {
   }
 });
 ```
+
+### Test12 - Todos list
+
+> [Tutorial: Todos list](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6)
+
+With a simple tasks list like this:
+
+```javascript
+data: {
+  tasks: [
+    { description: "Go to the store", completed: true },
+    { description: "Finish screencast", completed: false },
+    { description: "Make donation", completed: false },
+    { description: "Clear inbox", completed: false },
+    { description: "Make dinner", completed: false },
+    { description: "Clean room", completed: true }
+  ];
+}
+```
+
+It's easy to display completed tasks and the ones that should still be done:
+
+```html
+<div id="app">
+  <h2>Don't forget</h2>
+  <ul>
+    <li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
+  </ul>
+  <h2>Already completed</h2>
+  <ul>
+    <li class="completed" v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+  </ul>
+</div>
+```
+
+With `v-if` it's easy to put a condition before doing the display.
+
+**Optimization**
+
+By the use of a computed variable, the content of the variable will be put in cache so, on the next call and until the real data is changed, the list won't be filtered again and again.
+
+```javascript
+data: {
+  tasks: [
+    { description: "Go to the store", completed: true },
+    { description: "Finish screencast", completed: false },
+    { description: "Make donation", completed: false },
+    { description: "Clear inbox", completed: false },
+    { description: "Make dinner", completed: false },
+    { description: "Clean room", completed: true }
+  ];
+},
+computed: {
+  incompleteTasks() {
+    return this.tasks.filter(task => !task.completed);
+  }
+}
+```
+
+HTML becomes:
+
+```html
+<div id="app">
+  <h2>Don't forget</h2>
+  <ul>
+    <li v-for="task in incompleteTasks" v-text="task.description"></li>
+  </ul>
+  <h2>Already completed</h2>
+  <ul>
+    <li class="completed" v-for="task in completeTasks" v-text="task.description"></li>
+  </ul>
+</div>
+```
+
+### Test12 - Todos list
+
+> [Tutorial: Todos list](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6)
+
+We've already see how to define a props but, as an alternative, we can use `<slot></slot>` to ask Vue to use the content of the element. The code below will display the list of tasks in a list item construction.
+
+```html
+<div id="app">
+  <task>Go to the store</task>
+  <task>Finish screencast</task>
+  <task>Make donation</task> 
+  <task>Clear inbox</task> 
+  <task>Make dinner</task>
+  <task>Clean room</task>
+</div>
+```
+
+```javascript
+Vue.component("task", {
+  template: `<li><slot></slot></li>`
+});
+
+var app = new Vue({
+  el: "#app",
+  data: {}
+});
+```
+
+The alternative syntax, with `props`, is:
+
+```html
+<div id="app">
+  <task name="Go to the store"></task>
+  <task name="Finish screencast"></task>
+  <task name="Make donation"></task>
+  <task name="Clear inbox"></task>
+  <task name="Make dinner"></task>
+  <task name="Clean room"></task>
+</div>
+```
+```javascript
+Vue.component("task", {
+  props: ["name"],
+  template: `<li>{{ name }}</li>`
+});
+```
+
+### Adding a close button
+
+The HTML below will display a list of tasks.
+
+```html
+<div id="app" class="container">
+    <task-list></task-list>
+</div>
+```
+
+`task-list` is a view component that will use another component `task`. For each task, a card will be displayed with the title and a dummy description but, very easy, will include a close button.
+
+```html
+<button type="button" @click="isVisible = false" class="delete"></button>
+```
+
+The expression will just put the `isVisible` variable to false. No need to call a jQuery `$('#div').close();` or anything else. Just by setting the variable to false will do the trick since the card is upon a `v-if` condition: `<article class="message is-info" v-show="isVisible">`. Easy! 
+
+```javascript
+Vue.component("task-list", {
+  template: `
+    <div>
+      <task v-for="task in tasks">{{ task.description }}</task>
+    </div>`,
+  data() {
+    return {
+      tasks: [
+        { description: 'Go to the store', completed: true },
+        { description: 'Finish screencast', completed: false },
+        { description: 'Make donation', completed: false },
+        { description: 'Clear inbox', completed: false },
+        { description: 'Make dinner', completed: false },
+        { description: 'Clean room', completed: true }
+      ]
+    }
+  }
+});
+
+Vue.component("task", {
+  props: ["title"],
+  template:
+    `<article class="message is-info" v-show="isVisible">
+        <div class="message-header">
+          <p><slot></slot></p>
+          <button type="button" @click="hideModal"></button>
+        </div>
+        <div class="message-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+    </article>`,
+  data() {
+    return {
+      isVisible: true
+    }
+  }
+});
+
+var app = new Vue({
+  el: "#app",
+  data: {}
+});
+```
+
+CONTINUER https://laracasts.com/series/learn-vue-2-step-by-step/episodes/10
+
+### Test13 - Tasks components
+
+> [Tutorial: Todos list](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6)
+
+Using [Bulma CSS framework](https://bulma.io/) for displaying a list of todos.
+
+A task (*todo*) is a component in Vue with a close button. Clicking on the button will just set a boolean `isVisible` variable to false. And that variable is used in the `v-show` attribute to show or hide the task.
+
+```javascript
+Vue.component("task", {
+  props: ["title"],
+  template:
+    `<article class="message is-info" v-show="isVisible">
+        <div class="message-header">
+          <p><slot></slot></p>
+          <button type="button" @click="isVisible = false" class="delete"></button>
+        </div>
+        <div class="message-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+    </article>`,
+  data() {
+    return {
+      isVisible: true
+    }
+  }
+});
+```
+
+### Test14 - Show modal
+
+> [Tutorial: Show modal](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/10)
+
+In HTML, we'll show a `modal` component using a `v-if` to show the modal only when a boolean is set to true. The modal contains a button that will emit a `close` event. That event will be catched in HTML with the `@close` attribute and we'll just set the variable to false so the modal will be hidden.
+
+```html
+<div id="app" class="container">
+  <modal v-if="showModal" @close="showModal = false">Hello world</modal>
+  <button type="button" @click="showModal = true">Show modal</button>
+</div>
+```
+
+```javascript
+Vue.component("modal", {
+  template: `
+    <div class="modal is-active">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box">
+          <slot></slot>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
+    </div>`
+});
+```
+
+### Test15 - Slots
+
+> [Tutorial: Show modal](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/14)
+
+When showing a component (like a modal form), we need to be able to specify the title to use for the modal but also the content and a footer with buttons so not only one single information but several.
+
+Until now, we've used `<slot></slot>` for taking everything that was mentioned within the component tag like `<modal><h1>This is my slot</h1></slot>`.
+
+In the example below, we'll use a component called `modal` with three slots: two named slots (`header` and `footer`) and one unnamed (aka `default slot`).
+
+```html
+<modal>
+  <template slot="header">This is my header slot</template>
+  Lorem ispo dolor sit amet.
+  <div slot="footer">
+      <a class="button is-primary">Save change</a>
+      <a class="button">Cancel</a>
+  </div>
+</modal>
+```
+
+The component can be something like this:
+
+```javascript
+Vue.component("modal", {
+  template: `
+    <div class="modal is-active">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">
+            <slot name="header"></slot>
+          </p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <slot></slot>
+        </section>
+        <footer class="modal-card-foot">
+          <slot name="footer">
+            Default footer...
+          </slot>
+        </footer>
+      </div>
+    </div>`
+});
+```
+
+With `<slot name="header"></slot>`, we'll use the slot called `header`.
+With `<slot name="footer">`, we'll use the slot called `footer`. In this example, we'll specify a default footer. This means that if the parent doesn't provide a footer slot, we'll provide one by default.
+The unnamed slot will be used by using `<slot></slot>`.
+
+### Test16 - Inline templates
+
+> [Tutorial: Inline templates](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/15)
+
+A Vue component always have an associate template like in:
+
+```javascript
+Vue.component("modal", {
+  template: `
+    <div class="modal is-active">
+      ...
+    </div>`
+});
+```
+
+But sometimes, it's not needed to put the template there but is more useful to keep it inside our HTML file. For instance, when the need for a component is not for reusability but just to take advantage of the reactivity of Vue.
+
+In order to use an inline template, we just need to add the `inline-template` attribute like below:
+
+```html
+<progress-review inline-template>
+  <div>
+    <h1>Your completion rate is {{ completionRate}}%</h1>
+    <p><button @click="completionRate += 10">Increase it by 10</button></p>
+  </div>
+</progress-review>
+```
+
+(remember: only one root element inside a template; this is why we need a `div` here above)
+
+```javascript
+Vue.component("progress-review", {
+  data() {
+    return {
+      completionRate: 25
+    }
+  }
+});
+```
+
+
+CONTINUE WITH WEBPACK https://laracasts.com/series/learn-vue-2-step-by-step/episodes/16

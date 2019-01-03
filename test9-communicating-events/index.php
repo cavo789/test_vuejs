@@ -26,22 +26,18 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
         <div class="container">
             <img id="logoVue" src='../assets/images/logo.png'/>
             <?php echo '<h1>' . basename(__DIR__) . '</h1>'; ?>
-
             <p><a href="https://www.vuemastery.com/courses/intro-to-vue-js/communicating-events">Tutorial: Communicating events</a></p>
-
             <div id="app">
                 <div class="cart">
                     <p>Cart({{cart.length}})</p>
                 </div>
                 <product :premium="premium" @add-to-cart='updateCart' @remove-from-cart='removeCart'></product>
             </div>
-            <a href="..">Return to the index</a> - <a href="<?php echo REPO;?>">Get explanations on Github</a>
+            <a href="..">Return to the index</a> - 
+            <a href="../test10-forms/index.php">Next</a> - 
+            <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="../assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-
         <script src="https://unpkg.com/vue"></script>
-
         <script>
             Vue.component('product-details', {
                 props: {
@@ -56,7 +52,6 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     </ul>
                 `
             });
-
             Vue.component("product", {
                 props: {
                     premium: {
@@ -161,7 +156,6 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     }
                 }
             });
-
             var app = new Vue({
                 el: '#app',
                 data: {
