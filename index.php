@@ -40,7 +40,7 @@ if (is_file($cat = __DIR__ . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     // Convert the list of folders into list items and add an hyperlink on each
                     // so we can visit the folder
                     echo '<aside class="menu"><ul class="menu-list"><li>' . implode(array_map(function ($tag) {
-                        return sprintf('<a href="%s/index.php">%s</a>', $tag, $tag);
+                        return sprintf('<a href="%s">%s</a>', $tag, $tag);
                     }, $dirs), '</li><li>') . '</li></ul></aside>';
                 ?>
             </div>
