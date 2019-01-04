@@ -65,6 +65,54 @@ In the options of the add-on, we'll need to `Allow access to file URLs`.
 - ESLint: Linting utility for Javascript and JSX
   - GitHub: https://github.com/Microsoft/vscode-eslint
 
+## Important remarks
+
+### Laravel
+
+By coding in a Blade template in Laravel, the following syntax **WON'T WORK** while it's perfectly correct:
+
+```html
+<div id="app">
+  <ul>
+      <li v-for="detail in details">{{ detail }}</li>
+  </ul>
+</div>
+```
+
+This is because the `{{ ... }}` syntax will be intercepted by Laravel (thus on server level (`PHP`)) while, here, it's not a Laravel expression but a Vue expression (thus on server side (`javascript`)).
+
+==> We need to inform Laravel to ignore it ! This is done by adding the `@` character before the expression:
+
+```html
+<div id="app">
+  <ul>
+      <li v-for="detail in details">@{{ detail }}</li>
+  </ul>
+</div>
+```
+
+Alternative: here we can use the `v-text` attribute to avoid to use an expression:
+
+```html
+<li v-for="detail in details" v-text="detail"></li>
+```
+
+### Webpack
+
+When building the package, Webpack will inject `<script src="/dist/build.js"></script>` in the `index.html` file. The location of the `build.js` file will thus be set to the root of the web application and not relative to the current folder.
+
+To use a relative path, we'll need to modify the `webpack.config.js` file and remove the `/` before the dist folder in the `publicPath` variable:
+
+```json
+module.exports = {
+  [ ... ]
+  output: {
+    [ ... ]
+    publicPath: 'dist/',
+    [ ... ]
+  },
+```
+
 ## Playing with Vue
 
 ### Test1 - Minimal application
@@ -1266,5 +1314,161 @@ Vue.component("progress-review", {
 });
 ```
 
+### Test17 - Webpack - Vue cli
 
-CONTINUE WITH WEBPACK https://laracasts.com/series/learn-vue-2-step-by-step/episodes/16
+[Webpack and vue-cli](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/16)
+
+1. We'll need to install 
+   * `Vue cli`: `npm install -g vue-cli`
+2. Create a new application: 
+   * `cd c:\repository` (where my-app is the desired application name).
+   * `vue init webpack-simple my-app` (where my-app is the desired application name).
+
+A new folder `c:\repository\my-app` will then be created with a template application.
+
+The file `/src/App.vue` will contains a structure with HTML (in the `template` section), JS (`script`) and CSS (`style`). Everything in only one single file, a `.vue` file.
+
+```html
+<template>
+</template>
+
+<script>
+</script>
+
+<style>
+</style>
+```
+
+#### Webpack
+
+**The browser doesn't understand how to use such `.vue` file**: Webpack will bundle the file into files that can be understand by any browser.
+
+The configuration is stored in the `webpack.config.js` file.
+
+The entry point of the application is mentioned in the ´entry` node.
+
+```javascript
+module.exports = {
+  entry: './src/main.js',
+  [...]
+```
+
+`output` is used for specifying where to put files when we'll compile our application:
+
+```javascript
+module.exports = {
+  [...]
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist/',
+    filename: 'build.js'
+  },
+  [...]
+```
+
+Webpack will also define various loaders:
+
+```javascript
+module.exports = {
+  [...]
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ],
+      },      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+          }
+          // other vue-loader options go here
+        }
+      },
+  [...]
+```
+
+##### Install dependencies
+
+```
+npm install
+```
+
+##### Run Dev build script
+
+By firing the following instruction, the node environment will be set to `development`, webpack-dev-server will be instantiated and a browser automatically fired for this URL: `http://localhost:8081/`
+
+```
+npm run dev
+```
+
+`run dev` is a script defined in the `package.json` file, in the `scripts` node:
+
+```json
+"scripts": {
+  "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+  "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+}
+```
+
+`--hot` means `hot reload`: by changing a source file and just save it, the navigator will automatically refresh the page and the changes will be reflected immediately.
+
+##### Playing
+
+In `/src/App.vue`, we can f.i. update the content like below i.e. using a custom component called `message`:
+
+```html
+<template>
+  <div id="app">
+    <message>Hello there</message>
+    <message>Hello World</message>
+    <message>Hello Universe</message>
+  </div>
+</template>
+
+<script>
+import Message from "./components/Message.vue";
+
+export default {
+  name: "app",
+  components: { Message },
+  data() {
+    return {};
+  }
+};
+</script>
+
+<style>
+</style>
+```
+
+That component is just a `.vue` file stored in a sub-folder `components`.
+
+The `Message.vue` file will define a template that will show a `div` and our message; with a small styling.
+
+```html
+<template>
+  <div class="box">
+    <p>
+      <slot></slot>
+    </p>
+  </div>
+</template>
+
+<<script>
+export default {
+}
+</script>
+
+<<style>
+    .box{background: #e3e3e3; padding: 10px; border: 1px solid black; margin-bottom:10px;}
+</style>
+```
+
+Thanks the hot reload, just saving the files will make the changes immediately visible in the browser tab.
+
+
+CONTINUER https://laracasts.com/series/learn-vue-2-step-by-step/episodes/19

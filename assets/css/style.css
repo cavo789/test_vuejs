@@ -4,3 +4,12 @@
   left: 10px;
   float:left;
 }
+
+.remarks {
+  font-style: italic;
+  font-size: 0.8em;
+  margin: 0 0 25px 25px;
+  background-color:#9ef5ce;
+  padding:16px;
+  border: 1px solid #35485d;
+}
