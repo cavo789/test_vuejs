@@ -1,5 +1,5 @@
 <?php
-define('REPO', 'https://github.com/cavo789/test_vuejs#test13---tasks-component');
+define('REPO', 'https://github.com/cavo789/test_vuejs#test13---tasks-components');
 
 // Get the GitHub corner
 $github = '';

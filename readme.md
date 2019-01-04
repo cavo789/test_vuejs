@@ -25,8 +25,7 @@
     * [Building a review form](#building-a-review-form)
   * [Test11 - Tabs](#test11---tabs)
   * [Test12 - Todos list](#test12---todos-list)
-  * [Test12 - Todos list](#test12---todos-list-1)
-  * [Adding a close button](#adding-a-close-button)
+    * [Adding a close button](#adding-a-close-button)
   * [Test13 - Tasks components](#test13---tasks-components)
   * [Test14 - Show modal](#test14---show-modal)
   * [Test15 - Slots](#test15---slots)
@@ -1068,54 +1067,7 @@ HTML becomes:
 </div>
 ```
 
-### Test12 - Todos list
-
-> [Tutorial: Todos list](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6)
-
-We've already see how to define a props but, as an alternative, we can use `<slot></slot>` to ask Vue to use the content of the element. The code below will display the list of tasks in a list item construction.
-
-```html
-<div id="app">
-  <task>Go to the store</task>
-  <task>Finish screencast</task>
-  <task>Make donation</task> 
-  <task>Clear inbox</task> 
-  <task>Make dinner</task>
-  <task>Clean room</task>
-</div>
-```
-
-```javascript
-Vue.component("task", {
-  template: `<li><slot></slot></li>`
-});
-
-var app = new Vue({
-  el: "#app",
-  data: {}
-});
-```
-
-The alternative syntax, with `props`, is:
-
-```html
-<div id="app">
-  <task name="Go to the store"></task>
-  <task name="Finish screencast"></task>
-  <task name="Make donation"></task>
-  <task name="Clear inbox"></task>
-  <task name="Make dinner"></task>
-  <task name="Clean room"></task>
-</div>
-```
-```javascript
-Vue.component("task", {
-  props: ["name"],
-  template: `<li>{{ name }}</li>`
-});
-```
-
-### Adding a close button
+#### Adding a close button
 
 The HTML below will display a list of tasks.
 
