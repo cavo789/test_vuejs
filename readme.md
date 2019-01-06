@@ -7,6 +7,29 @@
 * [Installation](#installation)
 * [Debugging](#debugging)
 * [Visual Studio code - Extensions](#visual-studio-code---extensions)
+* [Options](#options)
+  * [Options / Data](#options--data)
+    * [computed](#computed)
+    * [data](#data)
+    * [props](#props)
+    * [methods](#methods)
+    * [watch](#watch)
+  * [Options / DOM](#options--dom)
+    * [el](#el)
+    * [template](#template)
+    * [render](#render)
+    * [renderError](#rendererror)
+  * [Options / Lifecycle Hooks](#options--lifecycle-hooks)
+  * [Options / Assets](#options--assets)
+  * [Options / Composition](#options--composition)
+  * [Options / Misc](#options--misc)
+  * [Instance Properties](#instance-properties)
+  * [Instance Methods / Data](#instance-methods--data)
+  * [Instance Methods / Events](#instance-methods--events)
+  * [Instance Methods / Lifecycle](#instance-methods--lifecycle)
+  * [Directives](#directives)
+  * [Special Attributes](#special-attributes)
+  * [Built-In Components](#built-in-components)
 * [Important remarks](#important-remarks)
   * [Laravel](#laravel)
   * [Webpack](#webpack)
@@ -30,7 +53,8 @@
   * [Test14 - Show modal](#test14---show-modal)
   * [Test15 - Slots](#test15---slots)
   * [Test16 - Inline templates](#test16---inline-templates)
-  * [Test17 - Webpack - Vue cli](#test17---webpack---vue-cli)
+  * [Test17 - Watch](#test17-watch)
+  * [Test18 - Webpack - Vue cli](#test18---webpack---vue-cli)
     * [Webpack](#webpack-1)
       * [Install dependencies](#install-dependencies)
       * [Run Dev build script](#run-dev-build-script)
@@ -44,6 +68,7 @@
 - laracast tutorials: https://laracasts.com/series/learn-vue-2-step-by-step/
 - A curated list of awesome things related to Vue.js: https://github.com/vuejs/awesome-vue
 - vuejs on Github: https://github.com/vuejs
+- French tutorial: https://fr.vuejs.org/v2/guide/
 
 ![Vue logo](https://vuejs.org/images/logo.png)
 
@@ -78,6 +103,308 @@ In the options of the add-on, we'll need to `Allow access to file URLs`.
   - Github: https://github.com/prettier/prettier-vscode
 - ESLint: Linting utility for Javascript and JSX
   - GitHub: https://github.com/Microsoft/vscode-eslint
+
+## Options
+
+List of options: [https://vuejs.org/v2/api/#Options-Data](https://vuejs.org/v2/api/#Options-Data)
+
+Options are set in the `Vue()` constructor, here below, `el` and `data`.
+
+```javascript
+var app = new Vue({
+  el: "#app",
+  data: {
+    [...]
+  }
+});
+```
+
+Here below a short list of options:
+
+### Options / Data
+
+#### computed
+
+https://vuejs.org/v2/api/#computed
+
+Where to define computed values...
+
+```javascript
+var app = new Vue({
+  el: "#app",
+  data: {
+    firstname: 'Christophe',
+    lastname: 'Avonture'
+  },
+  computed: {
+    fullname() {
+      return firstname + ' ' + lastname;
+    }
+  }
+});
+```
+
+
+#### data
+
+https://vuejs.org/v2/api/#data
+
+Where to declare variables and default values.
+
+```javascript
+var app = new Vue({
+  el: "#app",
+  data: {
+    firstname: 'Christophe',
+  }
+});
+```
+
+#### props
+
+https://vuejs.org/v2/api/#props
+
+Where to declare properties that can be initialized by the parent (caller) and used by the component.
+
+```javascript
+var app = new Vue({
+  el: "#app",
+  props: {
+    message: {
+        type: String,
+        required: true,
+        default: 'Hello world'
+    }
+  }
+});
+```
+
+#### methods
+
+https://vuejs.org/v2/api/#methods
+
+Where to code functions and events
+
+```html
+<button @click="showTitle">Show the title</button>
+```
+
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    title:'My preferred socks'
+  },
+  methods: {
+    showTitle() {
+        alert(this.title);
+    }
+  }
+});
+```
+
+#### watch
+
+https://vuejs.org/v2/api/#watch
+
+Set a watcher to a variable. The function will be called every time the data is changed.
+
+```html
+<div id="app" class="container">
+      <h1>Edit the title and see the console</h1>
+    <input type="text" v-model="title" />
+</div>
+```
+
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    title:'My preferred socks'
+  },
+  watch: {
+    title: function (val, oldVal) {
+      console.log('new title: %s, old value: %s', val, oldVal)
+    }
+  }
+});
+```
+
+### Options / DOM
+
+#### el
+
+https://vuejs.org/v2/api/#el
+
+Set the DOM element associated to the Vue instance
+
+```html
+<div id="app">
+  <tasks></tasks>
+</div>
+```
+
+```javascript
+
+var app = new Vue({
+  el: '#app'
+});
+```
+
+#### template
+
+https://vuejs.org/v2/api/#template
+
+Template string that will replace the DOM element
+
+```html
+<div id="app">
+  <task>This is a task</task>
+</div>
+```
+
+```javascript
+Vue.component("task", {
+  template:
+    `<div class="message-header">
+      <p><slot></slot></p>
+    </div>`
+});
+```
+
+#### render
+
+https://vuejs.org/v2/api/#render
+
+Vue recommend to use `template` but, when we need javascript for creating our HTML. So, a `render` function can be used instead of `template`.
+
+See https://vuejs.org/v2/guide/render-function.html
+
+A nice example is given here: https://vuejs.org/v2/guide/render-function.html#Basics
+
+#### renderError
+
+https://vuejs.org/v2/api/#renderError
+
+Provide a new way of outputting errors. Only since Vue 2.2.0 and during local development mode.
+
+```javascript
+new Vue({
+  render (h) {
+    throw new Error('oops')
+  },
+  renderError (h, err) {
+    return h('pre', { style: { color: 'red' }}, err.stack)
+  }
+}).$mount('#app')
+```
+
+### Options / Lifecycle Hooks
+
+There are a lot of events: https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+
+![Lifecycle Hooks](https://vuejs.org/images/lifecycle.png)
+
+* [beforeCreate](https://vuejs.org/v2/api/#beforeCreate)
+* [created](https://vuejs.org/v2/api/#created)
+* [beforeMount](https://vuejs.org/v2/api/#beforeMount)
+* [mounted](https://vuejs.org/v2/api/#mounted)
+* [beforeUpdate](https://vuejs.org/v2/api/#beforeUpdate)
+* [updated](https://vuejs.org/v2/api/#updated)
+* [activated](https://vuejs.org/v2/api/#activated)
+* [deactivated](https://vuejs.org/v2/api/#deactivated)
+* [beforeDestroy](https://vuejs.org/v2/api/#beforeDestroy)
+* [destroyed](https://vuejs.org/v2/api/#destroyed)
+* [errorCaptured](https://vuejs.org/v2/api/#errorCaptured)
+
+### Options / Assets
+
+* [components](https://vuejs.org/v2/api/#components)
+* [directives](https://vuejs.org/v2/api/#directives)
+* [filters](https://vuejs.org/v2/api/#filters)
+
+### Options / Composition
+
+* [extends](https://vuejs.org/v2/api/#extends)
+* [mixins](https://vuejs.org/v2/api/#mixins)
+* [parent](https://vuejs.org/v2/api/#parent)
+* [provide/inject](https://vuejs.org/v2/api/#provide-inject)
+
+### Options / Misc
+
+* [comments](https://vuejs.org/v2/api/#comments)
+* [delimiters](https://vuejs.org/v2/api/#delimiters)
+* [functional](https://vuejs.org/v2/api/#functional)
+* [inheritAttrs](https://vuejs.org/v2/api/#inheritAttrs)
+* [model](https://vuejs.org/v2/api/#model)
+* [name](https://vuejs.org/v2/api/#name)
+
+### Instance Properties
+
+* [vm.$attrs](https://vuejs.org/v2/api/#vm-attrs)
+* [vm.$children](https://vuejs.org/v2/api/#vm-children)
+* [vm.$data](https://vuejs.org/v2/api/#vm-data)
+* [vm.$el](https://vuejs.org/v2/api/#vm-el)
+* [vm.$isServer](https://vuejs.org/v2/api/#vm-isServer)
+* [vm.$listeners](https://vuejs.org/v2/api/#vm-listeners)
+* [vm.$options](https://vuejs.org/v2/api/#vm-options)
+* [vm.$parent](https://vuejs.org/v2/api/#vm-parent)
+* [vm.$props](https://vuejs.org/v2/api/#vm-props)
+* [vm.$refs](https://vuejs.org/v2/api/#vm-refs)
+* [vm.$root](https://vuejs.org/v2/api/#vm-root)
+* [vm.$scopedSlots](https://vuejs.org/v2/api/#vm-scopedSlots)
+* [vm.$slots](https://vuejs.org/v2/api/#vm-slots)
+
+### Instance Methods / Data
+
+* [vm.$delete( target, key )](https://vuejs.org/v2/api/#vm-delete)
+* [vm.$set( target, key, value )](https://vuejs.org/v2/api/#vm-set)
+* [vm.$watch( expOrFn, callback, [options] )](https://vuejs.org/v2/api/#vm-watch)
+
+### Instance Methods / Events
+
+* [vm.$emit( eventName, […args] )](https://vuejs.org/v2/api/#vm-emit)
+* [vm.$off( [event, callback] )](https://vuejs.org/v2/api/#vm-once)
+* [vm.$on( event, callback )](https://vuejs.org/v2/api/#vm-on)
+
+### Instance Methods / Lifecycle
+
+* [vm.$destroy()](https://vuejs.org/v2/api/#vm-destroy
+* [vm.$forceUpdate()](https://vuejs.org/v2/api/#vm-forceUpdate)
+* [vm.$mount( [elementOrSelector] )](https://vuejs.org/v2/api/#vm-mount)
+* [vm.$nextTick( [callback] )](https://vuejs.org/v2/api/#vm-nextTick)
+
+### Directives
+
+* [v-bind](https://vuejs.org/v2/api/#v-bind)
+* [v-cloak](https://vuejs.org/v2/api/#v-cloak)
+* [v-else-if](https://vuejs.org/v2/api/#v-else-if)
+* [v-else](https://vuejs.org/v2/api/#v-else)
+* [v-for](https://vuejs.org/v2/api/#v-for)
+* [v-html](https://vuejs.org/v2/api/#v-html)
+* [v-if](https://vuejs.org/v2/api/#v-if)
+* [v-model](https://vuejs.org/v2/api/#v-model)
+* [v-on](https://vuejs.org/v2/api/#v-on)
+* [v-once](https://vuejs.org/v2/api/#v-once)
+* [v-pre](https://vuejs.org/v2/api/#v-pre)
+* [v-show](https://vuejs.org/v2/api/#v-show)
+* [v-text](https://vuejs.org/v2/api/#v-text)
+
+### Special Attributes
+
+* [is](https://vuejs.org/v2/api/#is)
+* [key](https://vuejs.org/v2/api/#key)
+* [ref](https://vuejs.org/v2/api/#ref)
+* [slot-scope](https://vuejs.org/v2/api/#slot-scope)
+* [slot](https://vuejs.org/v2/api/#slot)
+
+### Built-In Components
+
+* [component](https://vuejs.org/v2/api/#component)
+* [keep-alive](https://vuejs.org/v2/api/#keep-alive)
+* [slot](https://vuejs.org/v2/api/#slot-1)
+* [transition-group](https://vuejs.org/v2/api/#transition-group)
+* [transition](https://vuejs.org/v2/api/#transition)
 
 ## Important remarks
 
@@ -1438,4 +1765,5 @@ export default {
 Thanks the hot reload, just saving the files will make the changes immediately visible in the browser tab.
 
 
-CONTINUER https://laracasts.com/series/learn-vue-2-step-by-step/episodes/19
+CONTINUER 
+* https://laracasts.com/series/learn-vue-2-step-by-step/episodes/19

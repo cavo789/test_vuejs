@@ -1,5 +1,5 @@
 <?php
-define('REPO', 'https://github.com/cavo789/test_vuejs#test16---inline-templates');
+define('REPO', 'https://github.com/cavo789/test_vuejs#test17---watch');
 
 // Get the GitHub corner
 $github = '';
@@ -19,7 +19,6 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
         <title>VueJS - Testing</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"/>
         <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
         <?php echo $github; ?>
@@ -28,15 +27,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
             <h1 class="title"><?php echo basename(__DIR__); ?></h1>
             <p class="subtitle">Using <strong>Bulma</strong> CSS framework</p>
             <div id="app" class="container">
-                <progress-review inline-template>
-                    <div>
-                        <h1>Your completion rate is {{ completionRate}}%</h1>
-                        <p><button @click="completionRate += 10">Increase it by 10</button></p>
-                    </div>
-                </progress-review>
+                 <h1>Edit the title and see the console</h1>
+                <input type="text" v-model="title" />
             </div>
             <a href="..">Return to the index</a> - 
-            <a href="../test17-watch/index.php">Next</a> - 
+            <a href="../test18-webpack-vue-cli/index.html">Next</a> - 
             <a href="<?php echo REPO; ?>">Get explanations on Github</a>
         </div>
         <script src="https://unpkg.com/vue"></script>
