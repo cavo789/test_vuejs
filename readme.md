@@ -454,6 +454,12 @@ module.exports = {
   },
 ```
 
+## Tips
+
+### Working with forms
+
+Laracast episodes [19](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/19), [20](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/20) and [21](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/21) is giving nice example of how create a Vue.js form submit script working with Laravel validation.
+
 ## Playing with Vue
 
 ### Test1 - Minimal application
@@ -1608,7 +1614,27 @@ Vue.component("progress-review", {
 });
 ```
 
-### Test17 - Webpack - Vue cli
+### Test17 - Watch
+
+A watcher will allow to capture any change to a variable like here below:
+
+```javascript
+var app = new Vue({
+  el: "#app",
+  data() {
+    return {
+      title: 'Nice title'
+    }
+  },
+  watch: {
+    title: function (val, oldVal) {
+      console.log('new title: %s, old value: %s', val, oldVal)
+    }
+  }
+});
+```
+
+### Test18 - Webpack - Vue cli
 
 [Webpack and vue-cli](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/16)
 
@@ -1764,6 +1790,5 @@ export default {
 
 Thanks the hot reload, just saving the files will make the changes immediately visible in the browser tab.
 
-
-CONTINUER 
-* https://laracasts.com/series/learn-vue-2-step-by-step/episodes/19
+## CONTINUER 
+* https://laracasts.com/series/learn-vue-2-step-by-step/episodes/22
