@@ -69,7 +69,8 @@
 - A curated list of awesome things related to Vue.js: https://github.com/vuejs/awesome-vue
 - vuejs on Github: https://github.com/vuejs
 - French tutorial: https://fr.vuejs.org/v2/guide/
-
+- 30 days of Vue (PDF and tutorials) https://github.com/fullstackio/30-days-of-vue
+  
 ![Vue logo](https://vuejs.org/images/logo.png)
 
 - Vue is **Reactive**: the Vue instance data object is linked to every places where this data is used so, by assigning a new value to a data, Vue will guarantee that the newest value will be displayed in the DOM. No coding is required.
