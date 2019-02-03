@@ -69,6 +69,7 @@
 - A curated list of awesome things related to Vue.js: https://github.com/vuejs/awesome-vue
 - vuejs on Github: https://github.com/vuejs
 - French tutorial: https://fr.vuejs.org/v2/guide/
+- French videos - Grafikart: https://www.youtube.com/playlist?list=PLjwdMgw5TTLW-mAtlR46VajrKs4dep3y0
 - 30 days of Vue (PDF and tutorials) https://github.com/fullstackio/30-days-of-vue
   
 ![Vue logo](https://vuejs.org/images/logo.png)
@@ -1790,6 +1791,18 @@ export default {
 ```
 
 Thanks the hot reload, just saving the files will make the changes immediately visible in the browser tab.
+
+
+
+
+### Tutorials
+
+#### Vue Router
+
+French video about how to implement Vue Router. By Grafikart.fr
+
+> https://www.grafikart.fr/tutoriels/vue-router-822 - https://www.youtube.com/watch?v=PCsDcWlWeEY&list=PLjwdMgw5TTLW-mAtlR46VajrKs4dep3y0&index=16&t=0s
+
 
 ## CONTINUER 
 * https://laracasts.com/series/learn-vue-2-step-by-step/episodes/22
