@@ -2,63 +2,72 @@
 
 > Personal learning application to understand Vue.js. Step by step approach
 
-* [Quick introduction](#quick-introduction)
-  * [Cheatsheet](#cheatsheet)
-* [Installation](#installation)
-* [Debugging](#debugging)
-* [Visual Studio code - Extensions](#visual-studio-code---extensions)
-* [Options](#options)
-  * [Options / Data](#options--data)
-    * [computed](#computed)
-    * [data](#data)
-    * [props](#props)
-    * [methods](#methods)
-    * [watch](#watch)
-  * [Options / DOM](#options--dom)
-    * [el](#el)
-    * [template](#template)
-    * [render](#render)
-    * [renderError](#rendererror)
-  * [Options / Lifecycle Hooks](#options--lifecycle-hooks)
-  * [Options / Assets](#options--assets)
-  * [Options / Composition](#options--composition)
-  * [Options / Misc](#options--misc)
-  * [Instance Properties](#instance-properties)
-  * [Instance Methods / Data](#instance-methods--data)
-  * [Instance Methods / Events](#instance-methods--events)
-  * [Instance Methods / Lifecycle](#instance-methods--lifecycle)
-  * [Directives](#directives)
-  * [Special Attributes](#special-attributes)
-  * [Built-In Components](#built-in-components)
-* [Important remarks](#important-remarks)
-  * [Laravel](#laravel)
-  * [Webpack](#webpack)
-* [Playing with Vue](#playing-with-vue)
-  * [Test1 - Minimal application](#test1---minimal-application)
-  * [Test2 - Binding attribute](#test2---binding-attribute)
-  * [Test3 - Conditional rendering](#test3---conditional-rendering)
-  * [Test4 - List rendering](#test4---list-rendering)
-  * [Test5 - Event handling](#test5---event-handling)
-    * [Update the source of the image](#update-the-source-of-the-image)
-  * [Test6 - Class and style binding](#test6---class-and-style-binding)
-  * [Test7 - Computed properties](#test7---computed-properties)
-  * [Test8 - Migrate to component](#test8---migrate-to-component)
-  * [Test9 - Communicating events](#test9---communicating-events)
-  * [Test10 - Forms](#test10---forms)
-    * [Building a review form](#building-a-review-form)
-  * [Test11 - Tabs](#test11---tabs)
-  * [Test12 - Todos list](#test12---todos-list)
-    * [Adding a close button](#adding-a-close-button)
-  * [Test13 - Tasks components](#test13---tasks-components)
-  * [Test14 - Show modal](#test14---show-modal)
-  * [Test15 - Slots](#test15---slots)
-  * [Test16 - Inline templates](#test16---inline-templates)
-  * [Test17 - Watch](#test17-watch)
-  * [Test18 - Webpack - Vue cli](#test18---webpack---vue-cli)
-    * [Webpack](#webpack-1)
-      * [Install dependencies](#install-dependencies)
-      * [Run Dev build script](#run-dev-build-script)
-      * [Playing](#playing)
+- [Quick introduction](#quick-introduction)
+- [Cheatsheet](#cheatsheet)
+- [Installation](#installation)
+- [Using a CDN](#using-a-cdn)
+- [Using NPM](#using-npm)
+- [Debugging](#debugging)
+- [Visual Studio code - Extensions](#visual-studio-code---extensions)
+- [Options](#options)
+- [Options / Data](#options--data)
+  - [computed](#computed)
+  - [data](#data)
+  - [props](#props)
+  - [methods](#methods)
+  - [watch](#watch)
+- [Options / DOM](#options--dom)
+  - [el](#el)
+  - [template](#template)
+  - [render](#render)
+  - [renderError](#rendererror)
+- [Options / Lifecycle Hooks](#options--lifecycle-hooks)
+- [Options / Assets](#options--assets)
+- [Options / Composition](#options--composition)
+- [Options / Misc](#options--misc)
+- [Instance Properties](#instance-properties)
+- [Instance Methods / Data](#instance-methods--data)
+- [Instance Methods / Events](#instance-methods--events)
+- [Instance Methods / Lifecycle](#instance-methods--lifecycle)
+- [Directives](#directives)
+- [Special Attributes](#special-attributes)
+- [Built-In Components](#built-in-components)
+- [Important remarks](#important-remarks)
+- [Laravel](#laravel)
+- [Webpack](#webpack)
+- [Tips](#tips)
+- [Working with forms](#working-with-forms)
+- [Playing with Vue](#playing-with-vue)
+- [Test1 - Minimal application](#test1---minimal-application)
+- [Test2 - Binding attribute](#test2---binding-attribute)
+- [Test3 - Conditional rendering](#test3---conditional-rendering)
+- [Test4 - List rendering](#test4---list-rendering)
+- [Test5 - Event handling](#test5---event-handling)
+  - [Update the source of the image](#update-the-source-of-the-image)
+- [Test6 - Class and style binding](#test6---class-and-style-binding)
+- [Test7 - Computed properties](#test7---computed-properties)
+- [Test8 - Migrate to component](#test8---migrate-to-component)
+- [Test9 - Communicating events](#test9---communicating-events)
+- [Test10 - Forms](#test10---forms)
+  - [Tip - Another syntax for v-model](#tip---another-syntax-for-v-model)
+  - [Building a review form](#building-a-review-form)
+- [Test11 - Tabs](#test11---tabs)
+- [Test12 - Todos list](#test12---todos-list)
+  - [Adding a close button](#adding-a-close-button)
+- [Test13 - Tasks components](#test13---tasks-components)
+- [Test14 - Show modal](#test14---show-modal)
+- [Test15 - Slots](#test15---slots)
+- [Test16 - Inline templates](#test16---inline-templates)
+- [Test17 - Watch](#test17---watch)
+- [Test18 - Webpack - Vue cli](#test18---webpack---vue-cli)
+  - [Webpack](#webpack-1)
+  - [Install dependencies](#install-dependencies)
+  - [Run Dev build script](#run-dev-build-script)
+  - [Playing](#playing)
+- [Test19 - Single Page Application](#test19---single-page-application)
+- [Tutorials](#tutorials)
+  - [Vue Router](#vue-router)
+- [CONTINUER](#continuer)
 
 ## Quick introduction
 
@@ -71,7 +80,7 @@
 - French tutorial: https://fr.vuejs.org/v2/guide/
 - French videos - Grafikart: https://www.youtube.com/playlist?list=PLjwdMgw5TTLW-mAtlR46VajrKs4dep3y0
 - 30 days of Vue (PDF and tutorials) https://github.com/fullstackio/30-days-of-vue
-  
+
 ![Vue logo](https://vuejs.org/images/logo.png)
 
 - Vue is **Reactive**: the Vue instance data object is linked to every places where this data is used so, by assigning a new value to a data, Vue will guarantee that the newest value will be displayed in the DOM. No coding is required.
@@ -82,9 +91,25 @@
 
 ## Installation
 
+### Using a CDN
+
 Easy way, just include the .js file by adding a reference to the unpkg CDN: https://unpkg.com/vue@2.5.16/dist/vue.js
 
 Read more: https://fr.vuejs.org/v2/guide/installation.html#CDN
+
+### Using NPM
+
+From a DOS prompt, type:
+
+```
+npm install Vue --save
+```
+
+then in the `main.js`, where we'll use Vue, just add import Vue like this:
+
+```javascript
+import Vue from "vue";
+```
 
 ## Debugging
 
@@ -135,17 +160,16 @@ Where to define computed values...
 var app = new Vue({
   el: "#app",
   data: {
-    firstname: 'Christophe',
-    lastname: 'Avonture'
+    firstname: "Christophe",
+    lastname: "Avonture"
   },
   computed: {
     fullname() {
-      return firstname + ' ' + lastname;
+      return firstname + " " + lastname;
     }
   }
 });
 ```
-
 
 #### data
 
@@ -157,7 +181,7 @@ Where to declare variables and default values.
 var app = new Vue({
   el: "#app",
   data: {
-    firstname: 'Christophe',
+    firstname: "Christophe"
   }
 });
 ```
@@ -173,9 +197,9 @@ var app = new Vue({
   el: "#app",
   props: {
     message: {
-        type: String,
-        required: true,
-        default: 'Hello world'
+      type: String,
+      required: true,
+      default: "Hello world"
     }
   }
 });
@@ -193,13 +217,13 @@ Where to code functions and events
 
 ```javascript
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    title:'My preferred socks'
+    title: "My preferred socks"
   },
   methods: {
     showTitle() {
-        alert(this.title);
+      alert(this.title);
     }
   }
 });
@@ -213,20 +237,20 @@ Set a watcher to a variable. The function will be called every time the data is 
 
 ```html
 <div id="app" class="container">
-      <h1>Edit the title and see the console</h1>
-    <input type="text" v-model="title" />
+  <h1>Edit the title and see the console</h1>
+  <input type="text" v-model="title" />
 </div>
 ```
 
 ```javascript
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    title:'My preferred socks'
+    title: "My preferred socks"
   },
   watch: {
-    title: function (val, oldVal) {
-      console.log('new title: %s, old value: %s', val, oldVal)
+    title: function(val, oldVal) {
+      console.log("new title: %s, old value: %s", val, oldVal);
     }
   }
 });
@@ -247,9 +271,8 @@ Set the DOM element associated to the Vue instance
 ```
 
 ```javascript
-
 var app = new Vue({
-  el: '#app'
+  el: "#app"
 });
 ```
 
@@ -267,8 +290,7 @@ Template string that will replace the DOM element
 
 ```javascript
 Vue.component("task", {
-  template:
-    `<div class="message-header">
+  template: `<div class="message-header">
       <p><slot></slot></p>
     </div>`
 });
@@ -292,13 +314,13 @@ Provide a new way of outputting errors. Only since Vue 2.2.0 and during local de
 
 ```javascript
 new Vue({
-  render (h) {
-    throw new Error('oops')
+  render(h) {
+    throw new Error("oops");
   },
-  renderError (h, err) {
-    return h('pre', { style: { color: 'red' }}, err.stack)
+  renderError(h, err) {
+    return h("pre", { style: { color: "red" } }, err.stack);
   }
-}).$mount('#app')
+}).$mount("#app");
 ```
 
 ### Options / Lifecycle Hooks
@@ -307,106 +329,106 @@ There are a lot of events: https://vuejs.org/v2/guide/instance.html#Lifecycle-Di
 
 ![Lifecycle Hooks](https://vuejs.org/images/lifecycle.png)
 
-* [beforeCreate](https://vuejs.org/v2/api/#beforeCreate)
-* [created](https://vuejs.org/v2/api/#created)
-* [beforeMount](https://vuejs.org/v2/api/#beforeMount)
-* [mounted](https://vuejs.org/v2/api/#mounted)
-* [beforeUpdate](https://vuejs.org/v2/api/#beforeUpdate)
-* [updated](https://vuejs.org/v2/api/#updated)
-* [activated](https://vuejs.org/v2/api/#activated)
-* [deactivated](https://vuejs.org/v2/api/#deactivated)
-* [beforeDestroy](https://vuejs.org/v2/api/#beforeDestroy)
-* [destroyed](https://vuejs.org/v2/api/#destroyed)
-* [errorCaptured](https://vuejs.org/v2/api/#errorCaptured)
+- [beforeCreate](https://vuejs.org/v2/api/#beforeCreate)
+- [created](https://vuejs.org/v2/api/#created)
+- [beforeMount](https://vuejs.org/v2/api/#beforeMount)
+- [mounted](https://vuejs.org/v2/api/#mounted)
+- [beforeUpdate](https://vuejs.org/v2/api/#beforeUpdate)
+- [updated](https://vuejs.org/v2/api/#updated)
+- [activated](https://vuejs.org/v2/api/#activated)
+- [deactivated](https://vuejs.org/v2/api/#deactivated)
+- [beforeDestroy](https://vuejs.org/v2/api/#beforeDestroy)
+- [destroyed](https://vuejs.org/v2/api/#destroyed)
+- [errorCaptured](https://vuejs.org/v2/api/#errorCaptured)
 
 ### Options / Assets
 
-* [components](https://vuejs.org/v2/api/#components)
-* [directives](https://vuejs.org/v2/api/#directives)
-* [filters](https://vuejs.org/v2/api/#filters)
+- [components](https://vuejs.org/v2/api/#components)
+- [directives](https://vuejs.org/v2/api/#directives)
+- [filters](https://vuejs.org/v2/api/#filters)
 
 ### Options / Composition
 
-* [extends](https://vuejs.org/v2/api/#extends)
-* [mixins](https://vuejs.org/v2/api/#mixins)
-* [parent](https://vuejs.org/v2/api/#parent)
-* [provide/inject](https://vuejs.org/v2/api/#provide-inject)
+- [extends](https://vuejs.org/v2/api/#extends)
+- [mixins](https://vuejs.org/v2/api/#mixins)
+- [parent](https://vuejs.org/v2/api/#parent)
+- [provide/inject](https://vuejs.org/v2/api/#provide-inject)
 
 ### Options / Misc
 
-* [comments](https://vuejs.org/v2/api/#comments)
-* [delimiters](https://vuejs.org/v2/api/#delimiters)
-* [functional](https://vuejs.org/v2/api/#functional)
-* [inheritAttrs](https://vuejs.org/v2/api/#inheritAttrs)
-* [model](https://vuejs.org/v2/api/#model)
-* [name](https://vuejs.org/v2/api/#name)
+- [comments](https://vuejs.org/v2/api/#comments)
+- [delimiters](https://vuejs.org/v2/api/#delimiters)
+- [functional](https://vuejs.org/v2/api/#functional)
+- [inheritAttrs](https://vuejs.org/v2/api/#inheritAttrs)
+- [model](https://vuejs.org/v2/api/#model)
+- [name](https://vuejs.org/v2/api/#name)
 
 ### Instance Properties
 
-* [vm.$attrs](https://vuejs.org/v2/api/#vm-attrs)
-* [vm.$children](https://vuejs.org/v2/api/#vm-children)
-* [vm.$data](https://vuejs.org/v2/api/#vm-data)
-* [vm.$el](https://vuejs.org/v2/api/#vm-el)
-* [vm.$isServer](https://vuejs.org/v2/api/#vm-isServer)
-* [vm.$listeners](https://vuejs.org/v2/api/#vm-listeners)
-* [vm.$options](https://vuejs.org/v2/api/#vm-options)
-* [vm.$parent](https://vuejs.org/v2/api/#vm-parent)
-* [vm.$props](https://vuejs.org/v2/api/#vm-props)
-* [vm.$refs](https://vuejs.org/v2/api/#vm-refs)
-* [vm.$root](https://vuejs.org/v2/api/#vm-root)
-* [vm.$scopedSlots](https://vuejs.org/v2/api/#vm-scopedSlots)
-* [vm.$slots](https://vuejs.org/v2/api/#vm-slots)
+- [vm.\$attrs](https://vuejs.org/v2/api/#vm-attrs)
+- [vm.\$children](https://vuejs.org/v2/api/#vm-children)
+- [vm.\$data](https://vuejs.org/v2/api/#vm-data)
+- [vm.\$el](https://vuejs.org/v2/api/#vm-el)
+- [vm.\$isServer](https://vuejs.org/v2/api/#vm-isServer)
+- [vm.\$listeners](https://vuejs.org/v2/api/#vm-listeners)
+- [vm.\$options](https://vuejs.org/v2/api/#vm-options)
+- [vm.\$parent](https://vuejs.org/v2/api/#vm-parent)
+- [vm.\$props](https://vuejs.org/v2/api/#vm-props)
+- [vm.\$refs](https://vuejs.org/v2/api/#vm-refs)
+- [vm.\$root](https://vuejs.org/v2/api/#vm-root)
+- [vm.\$scopedSlots](https://vuejs.org/v2/api/#vm-scopedSlots)
+- [vm.\$slots](https://vuejs.org/v2/api/#vm-slots)
 
 ### Instance Methods / Data
 
-* [vm.$delete( target, key )](https://vuejs.org/v2/api/#vm-delete)
-* [vm.$set( target, key, value )](https://vuejs.org/v2/api/#vm-set)
-* [vm.$watch( expOrFn, callback, [options] )](https://vuejs.org/v2/api/#vm-watch)
+- [vm.\$delete( target, key )](https://vuejs.org/v2/api/#vm-delete)
+- [vm.\$set( target, key, value )](https://vuejs.org/v2/api/#vm-set)
+- [vm.\$watch( expOrFn, callback, [options] )](https://vuejs.org/v2/api/#vm-watch)
 
 ### Instance Methods / Events
 
-* [vm.$emit( eventName, […args] )](https://vuejs.org/v2/api/#vm-emit)
-* [vm.$off( [event, callback] )](https://vuejs.org/v2/api/#vm-once)
-* [vm.$on( event, callback )](https://vuejs.org/v2/api/#vm-on)
+- [vm.\$emit( eventName, […args] )](https://vuejs.org/v2/api/#vm-emit)
+- [vm.\$off( [event, callback] )](https://vuejs.org/v2/api/#vm-once)
+- [vm.\$on( event, callback )](https://vuejs.org/v2/api/#vm-on)
 
 ### Instance Methods / Lifecycle
 
-* [vm.$destroy()](https://vuejs.org/v2/api/#vm-destroy
-* [vm.$forceUpdate()](https://vuejs.org/v2/api/#vm-forceUpdate)
-* [vm.$mount( [elementOrSelector] )](https://vuejs.org/v2/api/#vm-mount)
-* [vm.$nextTick( [callback] )](https://vuejs.org/v2/api/#vm-nextTick)
+- [vm.$destroy()](https://vuejs.org/v2/api/#vm-destroy
+- [vm.\$forceUpdate()](https://vuejs.org/v2/api/#vm-forceUpdate)
+- [vm.\$mount( [elementOrSelector] )](https://vuejs.org/v2/api/#vm-mount)
+- [vm.\$nextTick( [callback] )](https://vuejs.org/v2/api/#vm-nextTick)
 
 ### Directives
 
-* [v-bind](https://vuejs.org/v2/api/#v-bind)
-* [v-cloak](https://vuejs.org/v2/api/#v-cloak)
-* [v-else-if](https://vuejs.org/v2/api/#v-else-if)
-* [v-else](https://vuejs.org/v2/api/#v-else)
-* [v-for](https://vuejs.org/v2/api/#v-for)
-* [v-html](https://vuejs.org/v2/api/#v-html)
-* [v-if](https://vuejs.org/v2/api/#v-if)
-* [v-model](https://vuejs.org/v2/api/#v-model)
-* [v-on](https://vuejs.org/v2/api/#v-on)
-* [v-once](https://vuejs.org/v2/api/#v-once)
-* [v-pre](https://vuejs.org/v2/api/#v-pre)
-* [v-show](https://vuejs.org/v2/api/#v-show)
-* [v-text](https://vuejs.org/v2/api/#v-text)
+- [v-bind](https://vuejs.org/v2/api/#v-bind)
+- [v-cloak](https://vuejs.org/v2/api/#v-cloak)
+- [v-else-if](https://vuejs.org/v2/api/#v-else-if)
+- [v-else](https://vuejs.org/v2/api/#v-else)
+- [v-for](https://vuejs.org/v2/api/#v-for)
+- [v-html](https://vuejs.org/v2/api/#v-html)
+- [v-if](https://vuejs.org/v2/api/#v-if)
+- [v-model](https://vuejs.org/v2/api/#v-model)
+- [v-on](https://vuejs.org/v2/api/#v-on)
+- [v-once](https://vuejs.org/v2/api/#v-once)
+- [v-pre](https://vuejs.org/v2/api/#v-pre)
+- [v-show](https://vuejs.org/v2/api/#v-show)
+- [v-text](https://vuejs.org/v2/api/#v-text)
 
 ### Special Attributes
 
-* [is](https://vuejs.org/v2/api/#is)
-* [key](https://vuejs.org/v2/api/#key)
-* [ref](https://vuejs.org/v2/api/#ref)
-* [slot-scope](https://vuejs.org/v2/api/#slot-scope)
-* [slot](https://vuejs.org/v2/api/#slot)
+- [is](https://vuejs.org/v2/api/#is)
+- [key](https://vuejs.org/v2/api/#key)
+- [ref](https://vuejs.org/v2/api/#ref)
+- [slot-scope](https://vuejs.org/v2/api/#slot-scope)
+- [slot](https://vuejs.org/v2/api/#slot)
 
 ### Built-In Components
 
-* [component](https://vuejs.org/v2/api/#component)
-* [keep-alive](https://vuejs.org/v2/api/#keep-alive)
-* [slot](https://vuejs.org/v2/api/#slot-1)
-* [transition-group](https://vuejs.org/v2/api/#transition-group)
-* [transition](https://vuejs.org/v2/api/#transition)
+- [component](https://vuejs.org/v2/api/#component)
+- [keep-alive](https://vuejs.org/v2/api/#keep-alive)
+- [slot](https://vuejs.org/v2/api/#slot-1)
+- [transition-group](https://vuejs.org/v2/api/#transition-group)
+- [transition](https://vuejs.org/v2/api/#transition)
 
 ## Important remarks
 
@@ -417,7 +439,7 @@ By coding in a Blade template in Laravel, the following syntax **WON'T WORK** wh
 ```html
 <div id="app">
   <ul>
-      <li v-for="detail in details">{{ detail }}</li>
+    <li v-for="detail in details">{{ detail }}</li>
   </ul>
 </div>
 ```
@@ -429,7 +451,7 @@ This is because the `{{ ... }}` syntax will be intercepted by Laravel (thus on s
 ```html
 <div id="app">
   <ul>
-      <li v-for="detail in details">@{{ detail }}</li>
+    <li v-for="detail in details">@{{ detail }}</li>
   </ul>
 </div>
 ```
@@ -1199,6 +1221,34 @@ To typecast the value as a number:
 <select id="rating" v-model.number="rating"></select>
 ```
 
+#### Tip - Another syntax for v-model
+
+> https://laracasts.com/series/learn-vue-2-step-by-step/episodes/25
+
+`v-model` does two things: assign a value to the form's element (like the `v-bind` does)
+
+```
+<input type="text" :value="Firstname"/>>
+```
+
+but also update the Vue.js variable i.e. when typing a new value, Vue.js will update the variable.
+
+So
+
+```
+<input type="text" v-model="Firstname" />
+```
+
+can be rewritten like
+
+```
+<input type="text" :value="Firstname" @input="Firstname = $event.target.value" />
+```
+
+(`$event.target.value`, in pure javascript, returns the value of the object where an event has been triggered).
+
+This _long_ syntax is useful when creating Vue component to keep updated the data in the parent.
+
 #### Building a review form
 
 The code below will build a review form with four entries: the username, does he/she will recommend or not the product, a rating and his/her review.
@@ -1354,11 +1404,20 @@ It's easy to display completed tasks and the ones that should still be done:
 <div id="app">
   <h2>Don't forget</h2>
   <ul>
-    <li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
+    <li
+      v-for="task in tasks"
+      v-if="!task.completed"
+      v-text="task.description"
+    ></li>
   </ul>
   <h2>Already completed</h2>
   <ul>
-    <li class="completed" v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+    <li
+      class="completed"
+      v-for="task in tasks"
+      v-if="task.completed"
+      v-text="task.description"
+    ></li>
   </ul>
 </div>
 ```
@@ -1397,7 +1456,11 @@ HTML becomes:
   </ul>
   <h2>Already completed</h2>
   <ul>
-    <li class="completed" v-for="task in completeTasks" v-text="task.description"></li>
+    <li
+      class="completed"
+      v-for="task in completeTasks"
+      v-text="task.description"
+    ></li>
   </ul>
 </div>
 ```
@@ -1408,7 +1471,7 @@ The HTML below will display a list of tasks.
 
 ```html
 <div id="app" class="container">
-    <task-list></task-list>
+  <task-list></task-list>
 </div>
 ```
 
@@ -1418,7 +1481,7 @@ The HTML below will display a list of tasks.
 <button type="button" @click="isVisible = false" class="delete"></button>
 ```
 
-The expression will just put the `isVisible` variable to false. No need to call a jQuery `$('#div').close();` or anything else. Just by setting the variable to false will do the trick since the card is upon a `v-if` condition: `<article class="message is-info" v-show="isVisible">`. Easy! 
+The expression will just put the `isVisible` variable to false. No need to call a jQuery `$('#div').close();` or anything else. Just by setting the variable to false will do the trick since the card is upon a `v-if` condition: `<article class="message is-info" v-show="isVisible">`. Easy!
 
 ```javascript
 Vue.component("task-list", {
@@ -1429,21 +1492,20 @@ Vue.component("task-list", {
   data() {
     return {
       tasks: [
-        { description: 'Go to the store', completed: true },
-        { description: 'Finish screencast', completed: false },
-        { description: 'Make donation', completed: false },
-        { description: 'Clear inbox', completed: false },
-        { description: 'Make dinner', completed: false },
-        { description: 'Clean room', completed: true }
+        { description: "Go to the store", completed: true },
+        { description: "Finish screencast", completed: false },
+        { description: "Make donation", completed: false },
+        { description: "Clear inbox", completed: false },
+        { description: "Make dinner", completed: false },
+        { description: "Clean room", completed: true }
       ]
-    }
+    };
   }
 });
 
 Vue.component("task", {
   props: ["title"],
-  template:
-    `<article class="message is-info" v-show="isVisible">
+  template: `<article class="message is-info" v-show="isVisible">
         <div class="message-header">
           <p><slot></slot></p>
           <button type="button" @click="hideModal"></button>
@@ -1455,7 +1517,7 @@ Vue.component("task", {
   data() {
     return {
       isVisible: true
-    }
+    };
   }
 });
 
@@ -1473,13 +1535,12 @@ CONTINUER https://laracasts.com/series/learn-vue-2-step-by-step/episodes/10
 
 Using [Bulma CSS framework](https://bulma.io/) for displaying a list of todos.
 
-A task (*todo*) is a component in Vue with a close button. Clicking on the button will just set a boolean `isVisible` variable to false. And that variable is used in the `v-show` attribute to show or hide the task.
+A task (_todo_) is a component in Vue with a close button. Clicking on the button will just set a boolean `isVisible` variable to false. And that variable is used in the `v-show` attribute to show or hide the task.
 
 ```javascript
 Vue.component("task", {
   props: ["title"],
-  template:
-    `<article class="message is-info" v-show="isVisible">
+  template: `<article class="message is-info" v-show="isVisible">
         <div class="message-header">
           <p><slot></slot></p>
           <button type="button" @click="isVisible = false" class="delete"></button>
@@ -1491,7 +1552,7 @@ Vue.component("task", {
   data() {
     return {
       isVisible: true
-    }
+    };
   }
 });
 ```
@@ -1536,11 +1597,13 @@ In the example below, we'll use a component called `modal` with three slots: two
 
 ```html
 <modal>
-  <template slot="header">This is my header slot</template>
+  <template slot="header"
+    >This is my header slot</template
+  >
   Lorem ispo dolor sit amet.
   <div slot="footer">
-      <a class="button is-primary">Save change</a>
-      <a class="button">Cancel</a>
+    <a class="button is-primary">Save change</a>
+    <a class="button">Cancel</a>
   </div>
 </modal>
 ```
@@ -1611,7 +1674,7 @@ Vue.component("progress-review", {
   data() {
     return {
       completionRate: 25
-    }
+    };
   }
 });
 ```
@@ -1625,12 +1688,12 @@ var app = new Vue({
   el: "#app",
   data() {
     return {
-      title: 'Nice title'
-    }
+      title: "Nice title"
+    };
   },
   watch: {
-    title: function (val, oldVal) {
-      console.log('new title: %s, old value: %s', val, oldVal)
+    title: function(val, oldVal) {
+      console.log("new title: %s, old value: %s", val, oldVal);
     }
   }
 });
@@ -1640,25 +1703,22 @@ var app = new Vue({
 
 [Webpack and vue-cli](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/16)
 
-1. We'll need to install 
-   * `Vue cli`: `npm install -g vue-cli`
-2. Create a new application: 
-   * `cd c:\repository` (where my-app is the desired application name).
-   * `vue init webpack-simple my-app` (where my-app is the desired application name).
+1. We'll need to install
+   - `Vue cli`: `npm install -g vue-cli`
+2. Create a new application:
+   - `cd c:\repository` (where my-app is the desired application name).
+   - `vue init webpack-simple my-app` (where my-app is the desired application name).
 
 A new folder `c:\repository\my-app` will then be created with a template application.
 
 The file `/src/App.vue` will contains a structure with HTML (in the `template` section), JS (`script`) and CSS (`style`). Everything in only one single file, a `.vue` file.
 
 ```html
-<template>
-</template>
+<template> </template>
 
-<script>
-</script>
+<script></script>
 
-<style>
-</style>
+<style></style>
 ```
 
 #### Webpack
@@ -1752,19 +1812,18 @@ In `/src/App.vue`, we can f.i. update the content like below i.e. using a custom
 </template>
 
 <script>
-import Message from "./components/Message.vue";
+  import Message from "./components/Message.vue";
 
-export default {
-  name: "app",
-  components: { Message },
-  data() {
-    return {};
-  }
-};
+  export default {
+    name: "app",
+    components: { Message },
+    data() {
+      return {};
+    }
+  };
 </script>
 
-<style>
-</style>
+<style></style>
 ```
 
 That component is just a `.vue` file stored in a sub-folder `components`.
@@ -1781,19 +1840,26 @@ The `Message.vue` file will define a template that will show a `div` and our mes
 </template>
 
 <<script>
-export default {
-}
+  export default {};
 </script>
 
 <<style>
-    .box{background: #e3e3e3; padding: 10px; border: 1px solid black; margin-bottom:10px;}
+  .box {
+    background: #e3e3e3;
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+  }
 </style>
 ```
 
 Thanks the hot reload, just saving the files will make the changes immediately visible in the browser tab.
 
+### Test19 - Single Page Application
 
+> SPA = Single Page Application
 
+[Single Page Application](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/26)
 
 ### Tutorials
 
@@ -1803,6 +1869,6 @@ French video about how to implement Vue Router. By Grafikart.fr
 
 > https://www.grafikart.fr/tutoriels/vue-router-822 - https://www.youtube.com/watch?v=PCsDcWlWeEY&list=PLjwdMgw5TTLW-mAtlR46VajrKs4dep3y0&index=16&t=0s
 
+## CONTINUER
 
-## CONTINUER 
-* https://laracasts.com/series/learn-vue-2-step-by-step/episodes/22
+- https://laracasts.com/series/learn-vue-2-step-by-step/episodes/22
