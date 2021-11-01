@@ -1,5 +1,7 @@
 # Test VueJS
 
+![Banner](./banner.svg)
+
 > Personal learning application to understand Vue.js. Step by step approach
 
 - [Quick introduction](#quick-introduction)
