@@ -506,7 +506,7 @@ Tip: in the developer console, we can reassign a new value to `app.product`. Vue
   <p>I really like {{ product }}...</p>
 </div>
 
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -531,7 +531,7 @@ We can bind HTML attributes thanks to `v-bind` like this:
   </div>
 </div>
 
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -565,7 +565,7 @@ Display DOM elements based on a condition like:
     <p v-else>Out of Stock</p>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -589,7 +589,7 @@ Display DOM elements based on a condition like:
     <p v-else>Out of Stock</p>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -621,7 +621,7 @@ The example here below will create bullets:
     </ul>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -645,7 +645,7 @@ And here one DIV by variants:
     </div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -688,7 +688,7 @@ Below a `Add to cart` button. Each time we'll click on it, the `cart` variable w
     <div class="cart"><p>Cart({{cart}})</p></div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -711,7 +711,7 @@ While `<button v-on:click="cart +=1">Add to Cart</button>` is valid, it'll be be
     <div class="cart"><p>Cart({{cart}})</p></div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -743,7 +743,7 @@ The code below will display the image by using `data.image` thus a green sock.
     <div class="product-image"><img v-bind:src="image" /></div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 <script>
   var app = new Vue({
     el: "#app",
@@ -770,7 +770,7 @@ We'll display a list of variations i.e. the fact that the socks are available in
     </div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -822,7 +822,7 @@ Below, the code will add two divs, one with a blue background and one with a gre
     </div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -888,7 +888,7 @@ Vue offers `computed` data in a very easy way:
     <div class="product-info"><h2>{{ titleProduct }}</h2></div>
   </div>
 </div>
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   var app = new Vue({
@@ -1066,7 +1066,7 @@ The final code will be (lighter version):
 ```html
 <div id="app"><product></product></div>
 
-<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue@2"></script>
 
 <script>
   Vue.component("product", {

@@ -41,13 +41,13 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                         <ul>
                             <li v-for="detail in details">{{ detail }}</li>
                         </ul>
-                        <div v-for="(variant, index) in variants" 
-                            :key="variant.variantId" 
-                            class="color-box" 
+                        <div v-for="(variant, index) in variants"
+                            :key="variant.variantId"
+                            class="color-box"
                             :style="{ backgroundColor: variant.variantColor }"
                             @mouseover="updateProduct(index)">
                         </div>
-                        <button v-on:click="addToCart" 
+                        <button v-on:click="addToCart"
                             :class="{ disabledButton: !inStock}"
                             :disabled="!inStock">
                             Add to Cart
@@ -63,11 +63,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     </div>
                 </div>
             </div>
-            <a href="..">Return to the index</a> - 
-            <a href="../test8-migrate-to-component/index.php">Next</a> - 
+            <a href="..">Return to the index</a> -
+            <a href="../test8-migrate-to-component/index.php">Next</a> -
             <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script>
             var app = new Vue({
                 el: '#app',
@@ -78,20 +78,20 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     alt:'a pair of socks',
                     title:'My preferred socks',
                     details: ["80% cotton", "20% polyester", "Gender-neutral"],
-                    variants: [ 
-                        { 
+                    variants: [
+                        {
                             variantId: 2234,
                             variantColor: 'green',
                             variantImage: 'assets/images/Socks-green.png',
                             variantQuantity: 100
                         },
-                        { 
+                        {
                             variantId: 2235,
                             variantColor: 'blue',
                             variantImage: 'assets/images/Socks-blue.png',
                             variantQuantity: 0
                         },
-                        { 
+                        {
                             variantId: 2236,
                             variantColor: 'gray',
                             variantImage: 'assets/images/Socks-gray.png',

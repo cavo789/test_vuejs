@@ -32,11 +32,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                 <p>I really like {{ product }}... <em>Do you also love {{ product }}?</em></p>
             </div>
             <p>Tip: open the Develop window, go to the Console and type <em>app.product='Boots';</em>. Part of the DOM will be refreshed and the new product name will be displayed.</p>
-            <a href="..">Return to the index</a> - 
+            <a href="..">Return to the index</a> -
             <a href="../test2-adding-image/index.php">Next</a> -
             <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script>
             var app = new Vue({
                 el: '#app',

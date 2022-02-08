@@ -33,14 +33,14 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                 </ul>
                 <h2>Already completed</h2>
                 <ul>
-                    <li class="completed" v-for='task in completeTasks' v-text="task.description"></li>                    
+                    <li class="completed" v-for='task in completeTasks' v-text="task.description"></li>
                 </ul>
             </div>
             <a href="..">Return to the index</a> -
-            <a href="../test13-tasks-component/index.php">Next</a> - 
+            <a href="../test13-tasks-component/index.php">Next</a> -
              <a href="<?php echo REPO; ?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script>
             var app = new Vue({
                 el: '#app',

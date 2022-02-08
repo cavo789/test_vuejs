@@ -30,11 +30,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                  <h1>Edit the title and see the console</h1>
                 <input type="text" v-model="title" />
             </div>
-            <a href="..">Return to the index</a> - 
-            <a href="../test18-webpack-vue-cli/index.html">Next</a> - 
+            <a href="..">Return to the index</a> -
+            <a href="../test18-webpack-vue-cli/index.html">Next</a> -
             <a href="<?php echo REPO; ?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script src="assets/app.js"></script>
     </body>
 </html>

@@ -31,12 +31,12 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                 <div id="app" class="container">
                     <task-list></task-list>
                 </div>
-                <a href="..">Return to the index</a> - 
-                <a href="../test14-show-modal/index.php">Next</a> - 
+                <a href="..">Return to the index</a> -
+                <a href="../test14-show-modal/index.php">Next</a> -
                 <a href="<?php echo REPO; ?>">Get explanations on Github</a>
             </div>
         </section>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script src="assets/app.js"></script>
     </body>
 </html>

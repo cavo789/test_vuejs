@@ -32,12 +32,12 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     <modal v-if="showModal" @close="showModal = false">Hello world</modal>
                     <button type="button" @click="showModal = true">Show modal</button>
                 </div>
-                <a href="..">Return to the index</a> - 
-                <a href="../test15-slots/index.php">Next</a> - 
+                <a href="..">Return to the index</a> -
+                <a href="../test15-slots/index.php">Next</a> -
                 <a href="<?php echo REPO; ?>">Get explanations on Github</a>
             </div>
         </section>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script src="assets/app.js"></script>
     </body>
 </html>

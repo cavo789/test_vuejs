@@ -52,11 +52,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     </div>
                 </div>
             </div>
-            <a href="..">Return to the index</a> - 
-            <a href="../test6-class-and-style-binding/index.php">Next</a> - 
+            <a href="..">Return to the index</a> -
+            <a href="../test6-class-and-style-binding/index.php">Next</a> -
             <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script>
             var app = new Vue({
                 el: '#app',
@@ -67,13 +67,13 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     title:'My preferred socks',
                     inStock: 8,
                     details: ["80% cotton", "20% polyester", "Gender-neutral"],
-                    variants: [ 
-                        { 
+                    variants: [
+                        {
                             variantId: 2234,
                             variantColor: 'green',
                             variantImage: 'assets/images/Socks-green.png'
                         },
-                        { 
+                        {
                             variantId: 2235,
                             variantColor: 'blue',
                             variantImage: 'assets/images/Socks-blue.png'

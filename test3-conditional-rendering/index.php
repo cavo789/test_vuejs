@@ -38,11 +38,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     </div>
                 </div>
             </div>
-            <a href="..">Return to the index</a> - 
-            <a href="../test4-list-rendering/index.php">Next</a> - 
+            <a href="..">Return to the index</a> -
+            <a href="../test4-list-rendering/index.php">Next</a> -
             <a href="<?php echo REPO;?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script>
             var app = new Vue({
                 el: '#app',
@@ -51,7 +51,7 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     image:'assets/images/Socks-green.png',
                     alt:'a pair of socks',
                     title:'My preferred socks',
-                }  
+                }
             });
         </script>
     </body>

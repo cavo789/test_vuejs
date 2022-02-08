@@ -35,11 +35,11 @@ if (is_file($cat = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'octocat.tmpl')) {
                     </div>
                 </progress-review>
             </div>
-            <a href="..">Return to the index</a> - 
-            <a href="../test17-watch/index.php">Next</a> - 
+            <a href="..">Return to the index</a> -
+            <a href="../test17-watch/index.php">Next</a> -
             <a href="<?php echo REPO; ?>">Get explanations on Github</a>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue@2"></script>
         <script src="assets/app.js"></script>
     </body>
 </html>
